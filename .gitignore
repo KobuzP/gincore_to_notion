@@ -1,0 +1,27 @@
+# środowisko wirtualne
+.venv/
+venv/
+
+# pliki konfiguracyjne z hasłami
+.env
+
+# pliki logów
+*.log
+
+# cache Pythona i kompilaty
+__pycache__/
+*.py[cod]
+*.pyo
+
+# pliki debugowe generowane przez aplikację
+debug_rma_*.html
+debug_rma_*.png
+
+# pliki backup i tymczasowe
+*.swp
+*.bak
+*.tmp
+~$*
+
+# dane Notion, tokeny itp.
+notion_token.json
