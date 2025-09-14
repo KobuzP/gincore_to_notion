@@ -1,0 +1,36 @@
+# config.py
+
+# CRM System Configuration (niewrażliwe)
+CRM_LOGIN_URL = "https://serwisfixed.gincore.net/auth/login_form"
+CRM_REPAIR_ORDER_BASE_URL = "https://serwisfixed.gincore.net/orders/"
+
+# Selenium Locators for CRM
+# Uwaga: jeśli guzik logowania ma tekst "Zaloguj", zmień 'Sign In' -> 'Zaloguj'
+CRM_USERNAME_FIELD_LOCATOR = ("name", "login")                     # :contentReference[oaicite:1]{index=1}
+CRM_PASSWORD_FIELD_LOCATOR = ("name", "password")                  # :contentReference[oaicite:2]{index=2}
+CRM_LOGIN_BUTTON_LOCATOR  = ("xpath", "//button[contains(text(), 'Sign In')]")  # :contentReference[oaicite:3]{index=3}
+
+# Wyszukiwanie / fallback
+CRM_REPAIR_ORDER_SEARCH_FIELD_LOCATOR = ("id", "repairOrderSearchInput")  # :contentReference[oaicite:4]{index=4}
+CRM_REPAIR_ORDER_GO_BUTTON_LOCATOR    = ("id", "searchButton")            # :contentReference[oaicite:5]{index=5}
+CRM_RMA_NOT_FOUND_INDICATOR           = ("xpath", "//h4[contains(text(), 'Order not found')]")  # :contentReference[oaicite:6]{index=6}
+
+# Pola do odczytu z CRM -> nazwy property w Notion
+CRM_DATA_FIELDS_TO_READ = {                                                     # :contentReference[oaicite:7]{index=7}
+    "Klient": ("xpath", "//div[contains(@class,'order-edit-client')]/a"),
+    "Numer telefonu": ("xpath", "//div[contains(@class,'order-edit-client-phone')]/a"),
+    "Producent": ("name", "users_fields[u_producent]"),
+    "Typ urządzenia": ("name", "users_fields[u_typ_urzadzenia]"),
+    "Model": ("name", "categories-goods-value[]"),
+    "Numer Seryjny": ("name", "serial[]"),
+    "Uwagi": ("name", "users_fields[u_komentarz_do_zlecenia]"),
+    "Opis Usterki": ("name", "defect"),
+    "Stan wizualny urządzenia": ("name", "comment"),
+    "Technik": ("xpath","//select[@name='engineer']/../div/button/span"),
+}
+
+# Mapowanie nazw techników -> Notion People (jeśli używasz pola typu People)
+USERS_NAME_TO_NOTION_ID_MAP = {
+    "Marian": "e9b2da1f-9ee2-4f0b-bf37-dbe991877990",
+    "Piotr Urbanek": "7724bbb5-9400-40e3-b08e-11f7ee6ec9f3",
+}
